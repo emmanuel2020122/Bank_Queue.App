@@ -14,6 +14,15 @@
     height:80vh;
    
 }
+.Chatbot{
+    content:url('../images/chat.png');
+    height: 50px;
+    width:50px;
+   margin-top: 75vh;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 1px 1px 3px 7px white;
+}
 .GuestFname{
     margin-bottom: 30px;
 }
@@ -58,6 +67,9 @@ form input {
     font-weight: 700;
     background-image: linear-gradient(45deg,#0a85ff, #1434a9);
     border-radius: 10px;
+    margin-right: 15rem;
+    margin-left: 15rem;
+    
 }
 .Drop{
     width:max-content;

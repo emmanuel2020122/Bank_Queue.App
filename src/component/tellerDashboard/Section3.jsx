@@ -12,7 +12,7 @@ function Section3 (){
     const {reValue,setReValue} = useContext(UserContext);
    // const w = reValue.service_time;
    
-    const duraTion1=  JSON.parse(reValue.service_time.secs);
+    const duraTion1=  JSON.parse(reValue.service_time);
  const hours =Math.floor(duraTion1/3600);
  const minutes = Math.floor((duraTion1 % 3600) / 60);
  const seconds =duraTion1 % 60;

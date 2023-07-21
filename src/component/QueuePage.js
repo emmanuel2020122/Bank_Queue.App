@@ -38,7 +38,7 @@ function QueuePage(){
 
 
 
-     const duraTion= JSON.parse(reValue.startup_timer.secs)
+     const duraTion=reValue.startup_timer;
  const hours =Math.floor(duraTion/3600);
  const minutes = Math.floor((duraTion % 3600) / 60);
  const seconds =duraTion % 60;
@@ -56,7 +56,7 @@ function QueuePage(){
             <h4>You have been assigned to Teller: {reValue.service_location}</h4>
             <p>Your current Position in the queue  is:</p>    
         <div style={{ width: 80, height: 80 }}>
-     <CircularProgressbar   minValue={1} maxValue={5} value={reValue.position} text={reValue.position}/>
+     <CircularProgressbar   minValue={0} maxValue={5} value={reValue.position} text={reValue.position}/>
      
         </div>
         <p><b>Estimated waiting Time:</b></p>

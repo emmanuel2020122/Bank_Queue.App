@@ -1,7 +1,9 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import axios from 'axios';
 import logo1 from "./tellerDashboard/Timages/Tlogo1.png";
+import {UserContext} from './UserContext';
 function Guestlogin(){
+  const {reValue,setReValue}= useContext(UserContext);
     const[formdata2,setFormdata2]=useState({
         GuestFirstname:'',
         GuestLastname:'',
@@ -16,9 +18,17 @@ function Guestlogin(){
             const handleSubmit1=(e)=>{
                 e.preventDefault();
              
-                    axios.get('http://10.42.0.1:3000/user/list', {withCredentials:true})
+                    axios.get(`${process.env.REACT_APP_BaseUrl}/user/guest`,{
+  
+                    })
                     .then((response)=>{
-                      console.log(response.data);
+                      if(response.status ===200){
+                        //const L_n =JSON.parse(res.data);
+                        const y=response.data;
+                        setReValue(y.national_id);
+                        console.log(response.data )
+                        console.log(reValue);
+                      console.log(response.data);}
                     })
                     .catch((error)=>{
                       console.error(error);
@@ -71,8 +81,9 @@ function Guestlogin(){
             </form>
             </div>
             </div>
-
+            <p  className="Chatbot"></p>
          </div>
+        
          </>
         
     )

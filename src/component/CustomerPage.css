@@ -14,7 +14,7 @@
             flex-direction: column;
             margin:-70px 0px 0px 0px;
             height:100vh;
-            background-image: url("C:\Users\Lenovo\Desktop\parody_project\parody-project\src\images\banner1.png") ;
+            /*background-image: url("C:\Users\Lenovo\Desktop\parody_project\parody-project\src\images\banner1.png") ;*/
             background-position-x: 100%;
             background-position-y: 100%;
             background-position: center;
@@ -34,7 +34,7 @@
             font-size:30px;
         }
         .H{
-            color:white;
+            color:black;
         }
         
         

@@ -21,6 +21,16 @@
        
        
     }
+    .Chatbot{
+        content:url('../images/chat.png');
+        height: 50px;
+        width:50px;
+       margin-top: 75vh;
+      
+        background-color: #fff;
+        border-radius: 40px;
+        box-shadow: 1px 1px 3px 7px white;
+    }
     .Stext1{
         color:white;
         font-weight: bold;
@@ -33,7 +43,18 @@
         box-shadow: inset 0px 0px 25px 0px #888;
         
     }
-   
+.Chat_widget{
+    height:50px;
+    color:black;
+    width:50px;
+    text-indent:70px;
+    align-content: 50px;
+    background-color: #fff;
+    box-shadow: inset  0px 0px 0px 10px #ccc;
+    
+    border-radius: 30px;
+    
+}
     .Password{
       margin: 1rem 0;
     }
@@ -91,6 +112,15 @@
        
        
        
+    }
+    .Chatbot{
+        content:url('../images/chat.png');
+        height: 10px;
+        width:10px;
+         
+        background-color: #fff;
+        border-radius: 40px;
+        box-shadow: 1px 1px 3px 7px white;
     }
  
     .sub-main{

@@ -4,8 +4,9 @@ import {CgProfile} from 'react-icons/cg';
 import { UserContext } from './UserContext';
 import { BsFill1CircleFill } from 'react-icons/bs';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
+//import { fetchEventSource } from '@microsoft/fetch-event-source';
 
 
 
@@ -16,6 +17,7 @@ function CustomerPage(){
 
 const {reValue,setReValue} = useContext(UserContext);
 const F_value = reValue;
+
 
 const Cus_n =useNavigate();
 
@@ -31,29 +33,130 @@ const [dropdownCus,setDropdownCus]=useState("Deposit");
 const handleChangeDropCus=(event)=>{
  setDropdownCus(event.target.value);
 }
-const handleCusSubmit =()=>{
-    axios.post(`${process.env.REACT_APP_BaseUrl}/user/join`,{
-        national_id:F_value,
-        activity:dropdownCus,
-        })
-    .then(res =>{
-        Cus_n('/QueuePage');
-       // const z = res.data;
-        //console.log(z);
-        setReValue(res.data);
-        console.log(res.data);
-        
-        
+ 
+    
+    const  handleCusSubmit = () =>{
+        const eventSource = new EventSource(`${process.env.REACT_APP_BaseUrl}/user/join?national_id=${F_value}&activity=${dropdownCus}`);
+  
+         
+  
+    eventSource.onmessage = (event) =>{
+        // parse the data as JSON
+        if(event.data){
+            console.log(JSON.parse(event.data));
+            Cus_n('/QueuePage');
+            setReValue(JSON.parse(event.data)); 
+        }else{
+            console.log("keep alive");
+        }
         
     }
 
+    eventSource.onerror =(event)=>{
+        console.log(event.data);
+        eventSource.close();
+    }
 
-    ).catch(err =>{
-        console.log(err);
-    } )
+   axios.get(`${process.env.REACT_APP_BaseUrl}/user/updatable?national_id=${F_value}&activity=${dropdownCus}`);
+      
+
+
+
    
 
 }
+
+
+
+    /*
+    const frn= response.data.pipe();  
+    frn.on('data', chunk => {
+        setMessages( chunk.toString());
+        setReValue(messages);
+        Cus_n('/QueuePage')
+        console.log(chunk.toString());
+      });
+      //async()=>{ 
+        await axios({method:'get', url:`${process.env.REACT_APP_BaseUrl}/user/join`,
+        headers:{
+            'Content-Type':'text/event-stream'
+        },
+        params: {
+            national_id:F_value,
+        activity:dropdownCus,
+        }
+        
+    })
+   */
+    
+        
+
+   
+        
+      
+      
+      //response.addEventListener('message',(event)=>{
+        //const data1= JSON.parse(event.data);
+        //Cus_n('/QueuePage');
+        //setMessages(data1);
+
+     // })
+     
+   
+        //update the state with the new message
+      
+    
+   
+       // const z = res.data;
+        //console.log(z);
+        //setReValue(res.data);
+       // console.log(res.data);   
+   
+   /* const response = await axios.post(`${process.env.REACT_APP_BaseUrl}/user/join`, { 
+    responseType: 'stream',
+});*/
+
+
+    /*const eventSource = new EventSource(`${process.env.REACT_APP_BaseUrl}/user/join`);
+
+    eventSource.onmessage = (event) =>{
+        // parse the data as JSON
+        Cus_n('/QueuePage');
+        console.log(JSON.parse(event.data));
+  await  axios({method:'post', url:`${process.env.REACT_APP_BaseUrl}/user/join`,data:{
+        national_id:F_value,
+        activity:dropdownCus,
+        },
+        responseType:'blob',
+        //update the state with the new message
+        setMessages( JSON.parse(event.data) );
+        setReValue(messages);
+        console.log(messages)
+        // await fetchEventSource(`${process.env.REACT_APP_BaseUrl}/user/join`, {
+        method: 'POST',
+    headers: {
+        'Content-Type': 'text/event-stream',
+    },
+    
+        onmessage(ev) {
+            if (ev.event === "FatalError") {
+                throw new FatalError(ev.data);
+            }
+            console.log(ev.data);
+        }
+    });
+    // await  axios({method:'get', url:`${process.env.REACT_APP_BaseUrl}/user/join`,
+        responseType:'stream',
+        params: {
+            national_id:F_value,
+        activity:dropdownCus,
+        }
+    }).then(event=>{
+        setMessages( JSON.parse(event.data));
+        setReValue(messages);
+        console.log(messages) 
+    })
+    };*/
 useEffect(()=>{
     const data1 = window.localStorage.getItem('users');
    if(data1 !== null) setReValue(JSON.parse(data1))
@@ -95,7 +198,6 @@ return(
                        <button className="Cusbutton" onClick={handleCusSubmit} type="submit">Join Queue</button>
                     </div>
            
-         
 
                     </div>
    

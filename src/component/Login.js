@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from './UserContext';
 import ChatBot from 'react-simple-chatbot';
+import {SiChatbot} from 'react-icons/si'
+import {TbMessageChatbot} from 'react-icons/tb'
+
  
 const steps = [
     {
@@ -105,10 +108,15 @@ function Login(){
                     <Link to="/Guestlogin"><b className="Gdetailsb"> Guest details</b></Link> 
                     
             </form>
+           
+            
             
             </div>
-            
+           
+           
+
             </div>
+            <p className="Chatbot"></p>
             
         </div>
        
