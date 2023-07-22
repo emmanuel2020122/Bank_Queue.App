@@ -35,29 +35,29 @@ const handleChangeDropCus=(event)=>{
 }
  
     
-    const  handleCusSubmit = () =>{
+    const  handleCusSubmit = async () =>{
         const eventSource = new EventSource(`${process.env.REACT_APP_BaseUrl}/user/join?national_id=${F_value}&activity=${dropdownCus}`);
   
          
   
-    eventSource.onmessage = (event) =>{
+    eventSource.onmessage= async (event)=>{
         // parse the data as JSON
-        if(event.data){
             console.log(JSON.parse(event.data));
-            Cus_n('/QueuePage');
             setReValue(JSON.parse(event.data)); 
-        }else{
-            console.log("keep alive");
-        }
+            Cus_n('/QueuePage');
+
         
     }
 
-    eventSource.onerror =(event)=>{
+    eventSource.onerror=async(event)=>{
         console.log(event.data);
         eventSource.close();
     }
+    //await new Promise((resolve) => {
+      //  eventSource.addEventListener("message", resolve, { once: true });
+      //});
 
-   axios.get(`${process.env.REACT_APP_BaseUrl}/user/updatable?national_id=${F_value}&activity=${dropdownCus}`);
+  
       
 
 

@@ -16,20 +16,25 @@
         background-size: auto 100%;
         background-repeat: no-repeat;
         height:100vh;
-        
+        position:relative;
        
        
        
     }
+    .chatPage{
+    }
     .Chatbot{
         content:url('../images/chat.png');
-        height: 50px;
-        width:50px;
-       margin-top: 75vh;
+        height: 40px;
+        width:40px;
       
         background-color: #fff;
         border-radius: 40px;
         box-shadow: 1px 1px 3px 7px white;
+    }
+    .botSpan{
+        color:white;
+       margin-right: 3px;
     }
     .Stext1{
         color:white;
@@ -60,7 +65,10 @@
     }
 
     h1 {
-        color:  #3455c9;
+        color: #fff;
+    }
+    .LoginText{
+        color:#fff;
     }
 
      .Lform{
@@ -114,15 +122,18 @@
        
     }
     .Chatbot{
-        content:url('../images/chat.png');
-        height: 10px;
-        width:10px;
+       
+        height: 40px;
+        width:40px;
          
         background-color: #fff;
         border-radius: 40px;
         box-shadow: 1px 1px 3px 7px white;
     }
- 
+    .botSpan{
+        color:white;
+       margin-right: 3px;
+    }
     .sub-main{
         display:flex;
         justify-content: center;
@@ -161,6 +172,7 @@
         display: block;
         justify-content: center;
         margin: 3rem;
+        margin-bottom: 8rem;
     }
 
     .AccountNo, .Password{

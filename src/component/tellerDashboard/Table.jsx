@@ -5,7 +5,7 @@ import axios from 'axios';
 function Table(){
     const {reValue,setReValue}=useContext(UserContext);
     const [messages, setMessages] = useState([]);
-    const sp =reValue.server_station;
+    const sp =reValue.station;
     console.log(sp);
 /*<tr >
         <td>Joseph K. Fosu</td>
