@@ -64,7 +64,7 @@ function Login(){
         });
         const systemMessage = {
             role:"system",
-            content:"Speak like a a bank customer enquiry personnel"
+            content:"Speak like a access bank Ghana customer enquiry personnel"
         }
       const apiRequestBody = {
         "model": "gpt-3.5-turbo",
@@ -85,6 +85,14 @@ function Login(){
 
         }).then((data) => {
             console.log(data);
+            console.log(data.choices[0].message.content);
+            setMessages(
+                [...chatMessages,{
+                    message: data.choices[0].message.content,
+                    sender: "chatGPT"
+                }]
+            );
+            setTyping(false);
         })
     }
     const history = useNavigate();
