@@ -14,7 +14,7 @@ function QueuePage(){
  const Leave = useNavigate();
  const senBack = reValue;
  
- const jex = JSON.stringify(reValue)
+
      
  const handleLeaveQueue = () =>{
     axios.post( `${process.env.REACT_APP_BaseUrl}/user/leave`, reValue

@@ -3,7 +3,7 @@ import logo1 from './tellerDashboard/Timages/Tlogo1.png';
 import {CgProfile} from 'react-icons/cg';
 import { UserContext } from './UserContext';
 import { BsFill1CircleFill } from 'react-icons/bs';
-import axios from 'axios';
+//import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 
 //import { fetchEventSource } from '@microsoft/fetch-event-source';
@@ -39,13 +39,17 @@ const handleChangeDropCus=(event)=>{
         const eventSource = new EventSource(`${process.env.REACT_APP_BaseUrl}/user/join?national_id=${F_value}&activity=${dropdownCus}`);
   
          
-  
+     
     eventSource.onmessage= async (event)=>{
         // parse the data as JSON
-            console.log(JSON.parse(event.data));
-            setReValue(JSON.parse(event.data)); 
             Cus_n('/QueuePage');
-
+            if(event.data === ""){
+               
+            }else{
+                setReValue(JSON.parse(event.data)); 
+            }
+            
+           
         
     }
 

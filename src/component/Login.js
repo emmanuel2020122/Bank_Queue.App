@@ -7,6 +7,7 @@ import { UserContext } from './UserContext';
 import ChatBot from 'react-simple-chatbot';
 import {SiChatbot} from 'react-icons/si'
 import {TbMessageChatbot} from 'react-icons/tb'
+import{AiFillCloseCircle} from 'react-icons/ai'
 import chatI from '../images/chat.png';
 import '@chatscope/chat-ui-kit-react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
@@ -30,9 +31,29 @@ function Login(){
   
     const {reValue,setReValue} = useContext(UserContext);
     const [showbot,setShowbot]=useState(false);
+    const [typing,setTyping]=useState(false)
+    
+    const [messages,setMessages] = useState([{
+        message:"Helloo i am chatGPT",
+        sender: "ChatGPT"
+    }])
    const handleBotClick=()=>{
       setShowbot(true);
 
+   }
+   const handleSend = async(message) =>{
+    const newMessage ={
+        message:message,
+        sender:"user",
+        direction:"outgoing"
+    }
+    const newMessages = [...messages, newMessage];//all the old messages  plus the new message
+    //update our messages state
+    setMessages(newMessages);
+    //set a typing indicator {Customer is typing }
+    setTyping(true);
+
+    // process message to chatGPT (send it over and see the response)
    }
    
     const history = useNavigate();
@@ -61,6 +82,11 @@ function Login(){
         ...prevFormdata,[name]:value}));
        
     };
+     const handleScreenSize = ()=>{
+        if(window.innerWidth > 1025){
+            
+        }
+     }
     
     const handleSubmit= (e) =>{
         e.preventDefault();
@@ -107,7 +133,7 @@ function Login(){
         botAvatar: "img.png",
         floating: true,
     };
-    //REACT_APP_     {showbot&&<ChatBot steps={steps} />}
+    //REACT_APP_   {showbot&&<ChatBot steps={steps}/>  
     //process.env.React_APP in back ticks `${}`
    
     
@@ -119,7 +145,25 @@ function Login(){
             <div>
             <img src={logo1} alt="Logo" width="fit-content" height="80px" background-color="white"/>
             <h1 className="LoginText">Login</h1>
-            
+            {showbot&& <div  style={window.innerWidth > 1024?{position:"absolute",height:"65vh",width:"40vw"}:{position:"absolute",height:"50%",width:"90%"}}>
+            <AiFillCloseCircle className="botClose" value={{color: "white"}} onClick={()=>{setShowbot(false)}}/> 
+              <MainContainer> 
+                <ChatContainer>
+                 <MessageList 
+                 typingIndicator={typing ? <TypingIndicator content="Customer is Typing "/> : null }
+                 >
+
+                   {messages.map((message, i)=>{
+                    return <Message key={i} model={message}/>
+                   })}
+                 </MessageList>
+                 <MessageInput placeholder="Type message here" onSend={handleSend} />
+                </ChatContainer>
+               
+
+            </MainContainer>
+             
+            </div> }
            
             
             
