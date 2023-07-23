@@ -4,23 +4,17 @@ import logo1 from "./tellerDashboard/Timages/Tlogo1.png";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from './UserContext';
-import ChatBot from 'react-simple-chatbot';
-import {SiChatbot} from 'react-icons/si'
-import {TbMessageChatbot} from 'react-icons/tb'
+//import ChatBot from 'react-simple-chatbot';
+//import {SiChatbot} from 'react-icons/si'
+//import {TbMessageChatbot} from 'react-icons/tb'
 import{AiFillCloseCircle} from 'react-icons/ai'
 import chatI from '../images/chat.png';
 import '@chatscope/chat-ui-kit-react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import {MainContainer, ChatContainer,MessageList,Message,MessageInput,TypingIndicator} from "@chatscope/chat-ui-kit-react"
 
-const API_KEY ='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';
-const steps = [
-    {
-        id: '0',
-        message: 'Hey Geek!',
-        end: true
-    }
-];
+
+
 
 function Login(){
     const [formdata,setFormdata]=useState({
@@ -28,13 +22,13 @@ function Login(){
         Password:''
 
     });
-  
+    const API_KEY ='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';
     const {reValue,setReValue} = useContext(UserContext);
     const [showbot,setShowbot]=useState(false);
     const [typing,setTyping]=useState(false)
     
     const [messages,setMessages] = useState([{
-        message:"Helloo i am chatGPT",
+        message:"Helloo How can i help You",
         sender: "ChatGPT"
     }])
    const handleBotClick=()=>{
@@ -54,8 +48,45 @@ function Login(){
     setTyping(true);
 
     // process message to chatGPT (send it over and see the response)
+        await processMessageToChatGPT(newMessages);
    }
-   
+    async function processMessageToChatGPT(chatMessages){
+        // chatMessages{sender:"user" or "ChatGPT",message:"The message content here"}
+        //apiMesssages {role:"user" or "assistant", content:"The message content here "}
+        let apiMessages  = chatMessages.map((messageObject) => {
+            let role ="";
+            if(messageObject.sender ===  "ChatGPT"){
+                role="assistant"
+            }else{
+                role="user"
+            }
+            return{ role: role, content: messageObject.message}
+        });
+        const systemMessage = {
+            role:"system",
+            content:"Speak like a a bank customer enquiry personnel"
+        }
+      const apiRequestBody = {
+        "model": "gpt-3.5-turbo",
+        "messages":[
+            systemMessage,
+            ...apiMessages
+        ]
+      }
+        await fetch("https://api.openai.com/v1/chat/completions",{
+            method: "POST",
+            headers:{
+                "Authorization": "Bearer " + API_KEY,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(apiRequestBody)
+        }).then((data) =>{
+            return data.json();
+
+        }).then((data) => {
+            console.log(data);
+        })
+    }
     const history = useNavigate();
     const [isValid, setIsValid] = useState(true);
     const validateAccountNumber = () =>{
@@ -82,11 +113,7 @@ function Login(){
         ...prevFormdata,[name]:value}));
        
     };
-     const handleScreenSize = ()=>{
-        if(window.innerWidth > 1025){
-            
-        }
-     }
+    
     
     const handleSubmit= (e) =>{
         e.preventDefault();
@@ -117,22 +144,10 @@ function Login(){
         console.log(formdata);
        
     }
-    const theme = {
-        background: '#C9FF8F',
-        headerBgColor: '#197B22',
-        headerFontSize: '20px',
-        botBubbleColor: '#0F3789',
-        headerFontColor: 'white',
-        botFontColor: 'white',
-        userBubbleColor: '#FF5733',
-        userFontColor: 'white',
-    };
+  
      
     // Set some properties of the bot
-    const config = {
-        botAvatar: "img.png",
-        floating: true,
-    };
+   
     //REACT_APP_   {showbot&&<ChatBot steps={steps}/>  
     //process.env.React_APP in back ticks `${}`
    
