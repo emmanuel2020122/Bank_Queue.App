@@ -9,7 +9,7 @@
         margin:0px 0px 0px 0px;
         margin-bottom: 0;
         background-color: rgb(207,207,207);
-        background-image: url("C:\Users\Lenovo\Desktop\parody_project\parody-project\src\images\banner1.png") ;
+        background-image: url("../images/banner2.png");
         background-position-x: 100%;
         background-position-y: 100%;
         background-position: center;
@@ -18,11 +18,13 @@
         height:100vh;
         position:relative;
        
-       
-       
     }
-    .chatPage{
+    .QwaitingLogo{
+         border-radius: 60px;
+         
     }
+
+  
     .Chatbot{
         content:url('../images/chat.png');
         height: 40px;
@@ -49,7 +51,7 @@
         
     }
 .Chat_widget{
-    height:50px;
+    height:40px;
     color:black;
     width:50px;
     text-indent:70px;
@@ -113,7 +115,7 @@
         margin:0px 0px 0px 0px;
         margin-bottom: 0;
         background-color: rgb(207,207,207);
-        background-image: url("../images/banner1.png") ;
+        background-image: url("../images/banner2.png") ;
         background-position-x: 100%;
         background-position-y: 100%;
         background-position: center;

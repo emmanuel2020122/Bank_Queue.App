@@ -5,7 +5,7 @@
     padding: 90px 0 90px 0;
     margin:0px 0px 0px 0px;
     background-color: rgb(207,207,207);
-    background-image: url("C:\Users\Lenovo\Desktop\parody_project\parody-project\src\images\banner1.png") ;
+    background-image: url("../images/banner2.png") ;
     background-position-x: 100%;
     background-position-y: 100%;
     background-position: center;
@@ -91,7 +91,7 @@ form input {
         margin:0px 0px 0px 0px;
         margin-bottom: 0;
         background-color: rgb(207,207,207);
-        background-image: url("C:\Users\Lenovo\Desktop\parody_project\parody-project\src\images\banner1.png") ;
+        background-image: url("../images/banner2.png") ;
         background-position-x: 100%;
         background-position-y: 100%;
         background-position: center;

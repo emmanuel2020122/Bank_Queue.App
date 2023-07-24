@@ -1,6 +1,6 @@
 import React,{useState , useContext} from "react";
 import {useNavigate} from 'react-router-dom';
-import logo1 from "./tellerDashboard/Timages/Tlogo1.png";
+import logo1 from "../images/Qlogo.png";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from './UserContext';
@@ -12,6 +12,7 @@ import chatI from '../images/chat.png';
 import '@chatscope/chat-ui-kit-react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import {MainContainer, ChatContainer,MessageList,Message,MessageInput,TypingIndicator} from "@chatscope/chat-ui-kit-react"
+import { CgEditContrast } from "react-icons/cg";
 
 
 
@@ -166,9 +167,10 @@ function Login(){
         
             <div className="sub-main">
             <div>
-            <img src={logo1} alt="Logo" width="fit-content" height="80px" background-color="white"/>
+            <img src={logo1} alt="Logo" className="" width="fit-content" height="80px" background-color="white"
+             style={{ opacity:2.5 }}/>
             <h1 className="LoginText">Login</h1>
-            {showbot&& <div  style={window.innerWidth > 1024?{position:"absolute",height:"65vh",width:"40vw"}:{position:"absolute",height:"50%",width:"90%"}}>
+            {showbot&& <div  style={window.innerWidth > 1024?{position:"absolute",height:"65vh",width:"40vw"}:{position:"absolute",height:"50%",width:"95%"}}>
             <AiFillCloseCircle className="botClose" value={{color: "white"}} onClick={()=>{setShowbot(false)}}/> 
               <MainContainer> 
                 <ChatContainer>

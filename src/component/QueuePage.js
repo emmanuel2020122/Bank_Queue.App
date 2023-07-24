@@ -17,11 +17,14 @@ function QueuePage(){
 
      
  const handleLeaveQueue = () =>{
-    axios.post( `${process.env.REACT_APP_BaseUrl}/user/leave`, reValue
+    axios.post( `${process.env.REACT_APP_BaseUrl}/user/leave`,{
+        national_id:reValue.national_id
+    }
 
     ) .then(res =>{
        if(res.data){
            Leave('/');
+           
        }
         console.log(res.data);
         console.log(reValue);
