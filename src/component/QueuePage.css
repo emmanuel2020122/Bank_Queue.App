@@ -23,14 +23,14 @@
    
    }
    .Qpbutton{
-      width: 12rem;
+      width: 18rem;
       height: 3rem;
       padding: 5px;
       color: #fff;
       font-size: 20px;
       font-weight: 700;
       background-image: linear-gradient(45deg,#0a85ff, #1434a9);
-      border-radius: 10rem;
+      border-radius: 0px;
    }
    
 }

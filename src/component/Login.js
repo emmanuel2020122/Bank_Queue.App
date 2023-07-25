@@ -12,7 +12,7 @@ import chatI from '../images/chat.png';
 import '@chatscope/chat-ui-kit-react'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import {MainContainer, ChatContainer,MessageList,Message,MessageInput,TypingIndicator} from "@chatscope/chat-ui-kit-react"
-import { CgEditContrast } from "react-icons/cg";
+//import { CgEditContrast } from "react-icons/cg";
 
 
 
@@ -29,7 +29,7 @@ function Login(){
     const [typing,setTyping]=useState(false)
     
     const [messages,setMessages] = useState([{
-        message:"Helloo How can i help You",
+        message:" How can i help You ?",
         sender: "ChatGPT"
     }])
    const handleBotClick=()=>{
@@ -163,6 +163,7 @@ function Login(){
     
     return(
         <>
+         <marquee >Transactions from 100,000 ghana cedis and above is considered bulk cash and hence you need to visit the banking Premises to be assigned to bulk cash</marquee>
         <div className="main">
         
             <div className="sub-main">
@@ -170,7 +171,7 @@ function Login(){
             <img src={logo1} alt="Logo" className="" width="fit-content" height="80px" background-color="white"
              style={{ opacity:2.5 }}/>
             <h1 className="LoginText">Login</h1>
-            {showbot&& <div  style={window.innerWidth > 1024?{position:"absolute",height:"65vh",width:"40vw"}:{position:"absolute",height:"50%",width:"95%"}}>
+            {showbot&& <div  style={window.innerWidth > 1024?{position:"absolute",height:"60vh",width:"40vw"}:{position:"absolute",height:"50%",width:"95%"}}>
             <AiFillCloseCircle className="botClose" value={{color: "white"}} onClick={()=>{setShowbot(false)}}/> 
               <MainContainer> 
                 <ChatContainer>

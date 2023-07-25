@@ -195,7 +195,13 @@ return(
                 <option value="SchoolFees">School Fees</option>
                 <option value="Utilities">Utilities</option>
                 </optgroup>
-              </select> 
+              </select> <br />
+              <h2>Select amount Range:</h2>
+              <select onChange={handleChangeDropCus} className="cusDrop">
+                <option value="range1">10-10,000</option>
+                <option value="range2">10,000-50,000</option>
+                <option value="range3">50,000-99,999</option>
+              </select>
               <h2 className="H">National_ID:</h2>
           <input type="text" name="cusId"  className="ID_field" value={F_value} readOnly/> <br />
            <div className="btn">
