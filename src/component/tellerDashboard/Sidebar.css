@@ -6,6 +6,13 @@
     font-weight: bolder;
    
 }
+.sidebar_a{
+    flex:1;
+    border-right:1px solid #ccc;
+    min-height: 100vh;
+    background-color: white;
+    font-weight: bolder;
+}
 
 .top , .bottom{
     height:50px;

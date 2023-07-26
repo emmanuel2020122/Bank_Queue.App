@@ -4,9 +4,20 @@ import {CiLogout} from 'react-icons/ci';
 import {MdAnalytics} from 'react-icons/md';
 import {GrNotification} from 'react-icons/gr';
 import {GrDashboard} from 'react-icons/gr';
+import axios from 'axios';
 
 import '../tellerDashboard/Sidebar.css'
 function Sidebar(){
+  const handleLogout = () =>{
+    axios.post( " ",{
+
+    }
+
+    ).then(
+      
+    )
+
+  }
 
     return(
       <div className='sidebar '>
@@ -22,7 +33,7 @@ function Sidebar(){
             </ul>
         </div>
         <div className='bottom'>
-            <CiLogout/>Logout 
+            <CiLogout onClick={handleLogout}/>Logout 
         </div>
       </div>
     )

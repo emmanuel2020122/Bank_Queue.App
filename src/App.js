@@ -9,6 +9,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Guestlogin from './component/Guestlogin';
 import CustomerPage from './component/CustomerPage';
 import QueuePage from './component/QueuePage';
+import Analytics from './component/tellerDashboard/Analytics';
 import TellerLogin from './component/TellerLogin';
 import React, {useState} from 'react';
 import Dashboard from "./component/tellerDashboard/Dashboard";
@@ -33,7 +34,8 @@ function App() {
       </Route>
       <Route path="Tella">
       <Route index element={<TellerLogin/>}/>
-      <Route path="Dashboard" element={<Dashboard/>}/> 
+      <Route path="Dashboard" element={<Dashboard/>}/>
+      <Route path='Analytics' element={<Analytics/>} />
       </Route>
       
     </Routes>
