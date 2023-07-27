@@ -7,7 +7,36 @@ function Table(){
     const [messages, setMessages] = useState([]);
     const sp =reValue.station;
     console.log(sp);
+
+    const handleCompleteTransaction = (x,y,activ,id) =>{
+        const timestamp = Date.parse(y);
+        const seconds = Math.floor(timestamp / 1000);
+        const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const T_seconds = Math.floor(date / 1000);
+
+        const T_duration = T_seconds - (x + seconds)
+
+        axios.post( `${process.env.REACT_APP_BaseUrl}/teller/dismiss`,{
+            detail:activ,
+            server_id:reValue.server_id,
+            client_national_id:id,
+            duration:T_duration
+
+      
+        }
+
+        ).then( res =>{
+            
+        }
+
+        )
+    }
 /*<tr >
+detail:c.activity,
+server_id
+client_national_id
+duration 
+created_date
         <td>Joseph K. Fosu</td>
         <td>144003938</td>
         <td>Deposit</td>
@@ -45,11 +74,15 @@ function Table(){
         eventSource.onmessage = (event) =>{
             // parse the data as JSON
     
-            console.log(JSON.parse(event.data));
-
+            //console.log(JSON.parse(event.data));
+            if(event.data !== ""){
+                setMessages( JSON.parse(event.data) );
+                console.log(messages)
+            }
+           
+            
             //update the state with the new message
-            setMessages( JSON.parse(event.data) );
-            console.log(messages)
+           
         };
         //Handle the error event
        eventSource.onerror = (error) =>{
@@ -62,7 +95,8 @@ function Table(){
          eventSource.close();
         };
     }, []);
-   
+     
+    
     return(
 <div className="tableP">
     <table>
@@ -74,17 +108,20 @@ function Table(){
         <th> NationalID</th>
         
         <th>Index</th>
+        <th>TimeStamp</th>
         <th>Approval</th>
        </tr>
     {
+       
         messages.map((c,index)=>(
             <tr key={index}>
             <td>{c.name}</td>
             <td>{c.activity}</td>
             <td>{c.national_id}</td>
             <td>{c.position}</td>
+            <td>{c.time_joined.slice(0, 19).replace('T', ' ')}</td>
             <td>
-      <button className='S_complete'> complete</button> <button className='S_cancel' > Cancel</button>
+      <button className='S_complete' onClick={handleCompleteTransaction(c.time_duration,c.time_joined.slice(0, 19).replace('T', ' '),c.activity,c.national_id)}> complete</button> <button className='S_cancel' onClick={""} > Cancel</button>
         </td> 
             </tr>
         ))

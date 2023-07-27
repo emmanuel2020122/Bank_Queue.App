@@ -40,12 +40,16 @@ function QueuePage(){
  }
 
 
-
-     const duraTion=reValue.startup_timer;
+  const Tella_P = reValue.server_location + 1;
+     const duraTion=reValue.time_duration;
  const hours =Math.floor(duraTion/3600);
  const minutes = Math.floor((duraTion % 3600) / 60);
  const seconds =duraTion % 60;
 
+ /*if(duraTion === 0){
+    alert("You have been assigned to teller No." + Tella_P);
+ }
+*/
 
 
 
@@ -56,7 +60,7 @@ function QueuePage(){
         </div><br />
         <div className="QueueBody">
             <h1>Hi {reValue.name}</h1>
-            <h4>You have been assigned to Teller: {reValue.service_location}</h4>
+            <h4>You have been assigned to Teller: {Tella_P}</h4>
             <p>Your current Position in the queue  is:</p>    
         <div style={{ width: 80, height: 80 }}>
      <CircularProgressbar   minValue={0} maxValue={5} value={reValue.position} text={reValue.position}/>

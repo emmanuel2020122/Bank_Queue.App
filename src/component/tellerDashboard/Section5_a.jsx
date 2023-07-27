@@ -7,7 +7,7 @@ function Section5_a(){
         ["Task", "Average Service rate"],
         ["Tella1", 11],
         ["Tella2", 2],
-        ["Tella2", 2],
+        ["Tella3", 2],
         ["Tella4", 2],
         
       ];

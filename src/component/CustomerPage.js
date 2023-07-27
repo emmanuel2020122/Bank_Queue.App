@@ -197,7 +197,7 @@ return(
                 </optgroup>
               </select> <br />
               <h2>Select amount Range:</h2>
-              <select onChange={handleChangeDropCus} className="cusDrop">
+              <select className="cusDrop">
                 <option value="range1">10-10,000</option>
                 <option value="range2">10,000-50,000</option>
                 <option value="range3">50,000-99,999</option>

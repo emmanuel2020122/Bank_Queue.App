@@ -23,7 +23,7 @@ function Login(){
         Password:''
 
     });
-    const API_KEY ='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';
+    const API_KEY ='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';
     const {reValue,setReValue} = useContext(UserContext);
     const [showbot,setShowbot]=useState(false);
     const [typing,setTyping]=useState(false)

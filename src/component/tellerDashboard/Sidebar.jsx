@@ -5,18 +5,28 @@ import {MdAnalytics} from 'react-icons/md';
 import {GrNotification} from 'react-icons/gr';
 import {GrDashboard} from 'react-icons/gr';
 import axios from 'axios';
-
 import '../tellerDashboard/Sidebar.css'
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';
+import {useNavigate} from 'react-router-dom';
+
 function Sidebar(){
+  const Tlogout = useNavigate();
+  const {reValue,setReValue}=useContext(UserContext);
+  
   const handleLogout = () =>{
-    axios.post( " ",{
-
+    axios.post( `${process.env.REACT_APP_BaseUrl}/teller/logout`,{
+            
+        server_position:reValue.station
+       
+    }).then( res=>{
+      if (res.data){
+         Tlogout('/Tella');
+      }
     }
-
-    ).then(
       
     )
-
+    console.log(reValue.station);
   }
 
     return(
@@ -32,8 +42,8 @@ function Sidebar(){
                 <li><GrDashboard className="D_icons"/></li>
             </ul>
         </div>
-        <div className='bottom'>
-            <CiLogout onClick={handleLogout}/>Logout 
+        <div className='bottom' onClick={handleLogout} >
+            <CiLogout/>Logout 
         </div>
       </div>
     )
