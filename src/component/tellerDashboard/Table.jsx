@@ -8,64 +8,31 @@ function Table(){
     const sp =reValue.station;
     console.log(sp);
 
-    const handleCompleteTransaction = (x,y,activ,id) =>{
+    const handleCompleteTransaction= (x,y,activ,id) =>{
         const timestamp = Date.parse(y);
+        console.log(timestamp);
         const seconds = Math.floor(timestamp / 1000);
         const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-        const T_seconds = Math.floor(date / 1000);
+        const d1 = Date.parse(date);
+        const T_seconds = Math.floor(d1 / 1000);
+        console.log(T_seconds);
+        console.log(x);
 
-        const T_duration = T_seconds - (x + seconds)
-
-        axios.post( `${process.env.REACT_APP_BaseUrl}/teller/dismiss`,{
+        const T_duration = T_seconds - (x + seconds);
+         console.log(activ , reValue.server_id,id,T_duration,date);
+         const output_data = {
             detail:activ,
             server_id:reValue.server_id,
             client_national_id:id,
-            duration:T_duration
-
-      
-        }
-
-        ).then( res =>{
-            
-        }
-
-        )
+            duration:T_duration,
+            // created_date:date
+        };
+        console.log(output_data);
+        axios.post(`${process.env.REACT_APP_BaseUrl}/teller/dismiss/${reValue.station}`, output_data).catch( error =>{
+            console.log(error)
+        } )
     }
-/*<tr >
-detail:c.activity,
-server_id
-client_national_id
-duration 
-created_date
-        <td>Joseph K. Fosu</td>
-        <td>144003938</td>
-        <td>Deposit</td>
-        <td>GHA-122-2323</td>
-        <td>none</td>
-        <td>
-        <button className='S_complete'> complete</button> <button className='S_cancel' > Cancel</button>
-        </td>
-       </tr>
-       <tr >
-        <td >Henry K.</td>
-        <td >144003938</td>
-        <td>Deposit</td>
-        <td>GHA-122-2323</td>
-        <td>none</td>
-        <td>
-        <button className='S_complete'> complete</button> <button className='S_cancel' > Cancel</button> 
-        </td>
-       </tr>
-       <tr >
-        <td >Emmauella Sarp</td>
-        <td>144003938</td>
-        <td>Deposit</td>
-        <td>GHA-122-2323</td>
-         <td>none</td>
-         <td>
-         <button className='S_complete'> complete</button> <button className='S_cancel'> Cancel</button>
-         </td>
-       </tr>*/
+
     useEffect(()=>{
         //create an EventSources instance
         const eventSource = new EventSource(`${process.env.REACT_APP_BaseUrl}/teller/queue?teller_position=${sp}`);
@@ -84,6 +51,7 @@ created_date
             //update the state with the new message
            
         };
+      
         //Handle the error event
        eventSource.onerror = (error) =>{
             //close the connection if there is an error
@@ -95,6 +63,7 @@ created_date
          eventSource.close();
         };
     }, []);
+    
      
     
     return(
@@ -121,7 +90,7 @@ created_date
             <td>{c.position}</td>
             <td>{c.time_joined.slice(0, 19).replace('T', ' ')}</td>
             <td>
-      <button className='S_complete' onClick={handleCompleteTransaction(c.time_duration,c.time_joined.slice(0, 19).replace('T', ' '),c.activity,c.national_id)}> complete</button> <button className='S_cancel' onClick={""} > Cancel</button>
+      <button className='S_complete' onClick={()=>{handleCompleteTransaction(c.time_duration,c.time_joined,c.activity,c.national_id)}}> complete</button> <button className='S_cancel'  > Cancel</button>
         </td> 
             </tr>
         ))
