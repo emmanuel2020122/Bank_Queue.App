@@ -8,7 +8,7 @@ function Section3_a(){
         <>
              <div className="widget">
      <div className='wleft'> </div>
-     <div className='wright'><b>Average Arrival rate of Customers/hr</b> <br /><br /> <p  className='S_font'>14</p> </div>            
+     <div className='wright'><b>Average queue length</b> <br /><br /> <p  className='S_font'>14</p> </div>            
  </div>
         </>
     )

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css'
 import axios from 'axios';
-import {Document, Page, Text, View, StyleSheet} from 'react-pdf';
+//import {Document, Page, Text, View, StyleSheet} from 'react-pdf';
 import {saveAs,FileSaver} from  'file-saver';
-import {PDFDocument , rgb, PDFText, PDFPage,PDFImage, PDFRenderer} from 'pdf-lib'
+//import {PDFDocument , rgb, PDFText, PDFPage,PDFImage, PDFRenderer} from 'pdf-lib'
 
 
 function Navbar_a(){
