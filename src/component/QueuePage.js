@@ -1,5 +1,5 @@
 import React,{useState,useContext,useEffect} from "react";
-import logo1 from '../images/React Icons_files/logo_2.png';
+import logo1 from '../images/UpdatedQlogo.png';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { UserContext } from "./UserContext";
@@ -46,10 +46,10 @@ function QueuePage(){
  const minutes = Math.floor((duraTion % 3600) / 60);
  const seconds =duraTion % 60;
 
- /*if(duraTion === 0){
+ if(duraTion === 0){
     alert("You have been assigned to teller No." + Tella_P);
  }
-*/
+
 
 
 

@@ -1,6 +1,6 @@
 import React,{useState , useContext} from "react";
 import {useNavigate} from 'react-router-dom';
-import logo1 from "../images/Qlogo.png";
+import logo1 from "../images/UpdatedQlogo.png";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from './UserContext';
@@ -23,7 +23,7 @@ function Login(){
         Password:''
 
     });
-    const API_KEY ='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';
+    const API_KEY =`${process.env.REACT_APP_BOT_API_KEY}`;
     const {reValue,setReValue} = useContext(UserContext);
     const [showbot,setShowbot]=useState(false);
     const [typing,setTyping]=useState(false)
@@ -65,7 +65,7 @@ function Login(){
         });
         const systemMessage = {
             role:"system",
-            content:"Speak like a access bank Ghana customer enquiry personnel"
+            content:"Speak like a access bank Ghana customer enquiry personnel and dont answer any other question aside related to access bank"
         }
       const apiRequestBody = {
         "model": "gpt-3.5-turbo",

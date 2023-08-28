@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css'
-function Sidebar_a(){
+function SidebarA(){
 
 
 
@@ -8,7 +8,9 @@ function Sidebar_a(){
     return(
         <>
         <div className='sidebar_a'>
-
+        <div>
+           
+        </div>
         </div>
 
         
@@ -23,4 +25,4 @@ function Sidebar_a(){
 
 
 
-export default Sidebar_a
+export default SidebarA

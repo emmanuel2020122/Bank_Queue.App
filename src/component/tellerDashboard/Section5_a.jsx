@@ -4,7 +4,7 @@ import { Chart } from "react-google-charts";
 
 function Section5_a(){
     const data = [
-        ["Task", "Average Service rate"],
+        ["Task", " Service rate"],
         ["Tella1", 11],
         ["Tella2", 2],
         ["Tella3", 2],
@@ -13,7 +13,7 @@ function Section5_a(){
       ];
       
        const options = {
-        title: "Average Service Rate",
+        title: " Service Rate",
         is3D: true,
       };
 
